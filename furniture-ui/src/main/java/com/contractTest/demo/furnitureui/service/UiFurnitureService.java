@@ -1,4 +1,4 @@
-package com.zararsiddiqi.demo.furnitureui.service;
+package com.contractTest.demo.furnitureui.service;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;

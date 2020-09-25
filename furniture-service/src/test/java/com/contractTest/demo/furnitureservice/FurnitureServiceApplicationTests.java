@@ -1,4 +1,4 @@
-package com.zararsiddiqi.demo.furnitureservice;
+package com.contractTest.demo.furnitureservice;
 
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -1,4 +1,4 @@
-package com.zararsiddiqi.demo.furnitureui;
+package com.contractTest.demo.furnitureui;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

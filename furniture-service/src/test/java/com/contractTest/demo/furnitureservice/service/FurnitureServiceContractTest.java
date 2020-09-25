@@ -1,4 +1,4 @@
-package com.zararsiddiqi.demo.furnitureservice.service;
+package com.contractTest.demo.furnitureservice.service;
 
 import au.com.dius.pact.core.model.Interaction;
 import au.com.dius.pact.core.model.Pact;

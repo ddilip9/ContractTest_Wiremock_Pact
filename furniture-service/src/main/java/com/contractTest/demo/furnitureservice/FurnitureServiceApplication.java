@@ -1,4 +1,4 @@
-package com.zararsiddiqi.demo.furnitureservice;
+package com.contractTest.demo.furnitureservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

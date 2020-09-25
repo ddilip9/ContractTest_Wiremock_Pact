@@ -1,7 +1,9 @@
-package com.zararsiddiqi.demo.furnitureui.service;
+package com.contractTest.demo.furnitureui.service;
 
 import com.atlassian.ta.wiremockpactgenerator.WireMockPactGenerator;
+import com.contractTest.demo.furnitureui.service.UiFurnitureService;
 import com.github.tomakehurst.wiremock.WireMockServer;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

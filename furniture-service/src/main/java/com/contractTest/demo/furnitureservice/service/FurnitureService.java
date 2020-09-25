@@ -1,4 +1,4 @@
-package com.zararsiddiqi.demo.furnitureservice.service;
+package com.contractTest.demo.furnitureservice.service;
 
 import org.springframework.stereotype.Component;
 
