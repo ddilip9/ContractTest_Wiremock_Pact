@@ -30,7 +30,6 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 public class FurnitureServiceContractTest {
 
     private static final int WIREMOCK_PORT = 8082;
-
     private WireMockServer wireMockServer;
 
     @BeforeEach

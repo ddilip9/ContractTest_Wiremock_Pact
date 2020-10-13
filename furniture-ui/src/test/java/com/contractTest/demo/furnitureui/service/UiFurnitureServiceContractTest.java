@@ -53,7 +53,7 @@ public class UiFurnitureServiceContractTest {
         wireMockServer.stubFor(get(
                 urlEqualTo("/furniture-types"))
                 .willReturn(aResponse()
-                        .withStatus(200)
+                        .withStatus(200)                        
                         .withHeader("Content-Type", "application/json")
                         .withBody("[\"Tables\",\"Chairs\"]")
         ));
