@@ -28,7 +28,7 @@ public class AlertManagementServiceContractTest {
     @Autowired
     private AlertManagementService alertManagementService;
 
-    /** We tell wiremock to generate the Pact based on stubbing we do **/
+    /** stubbing **/
     @BeforeEach
     public void setup() {
         wireMockServer = new WireMockServer(8082);
@@ -47,18 +47,16 @@ public class AlertManagementServiceContractTest {
         wireMockServer.stop();
     }
 
-    /** We define a wiremock stub and then execute some expectations against it **/
+    /** Set expectations and verify critical business flows **/
     @Test
-    public void alertTypes() {
+    public void when_incident_raised_by_consumer_expected_alertTypes_values_in_response_from_provider() {
         // given
         wireMockServer.stubFor(get(
                 urlEqualTo("/alert-types"))
-        		//urlEqualTo("/http://npis-service-virtualization-st1.npis.inttest.nbn-aws.local:8081/wfe/rest/7.0/instances"))
                 .willReturn(aResponse()
-                        .withStatus(200)                        
+                        .withStatus(200)
                         .withHeader("Content-Type", "application/json")
-                        .withBody("[\"id\",\"status\"]")
-        ));
+                        .withBody("[\"id\",\"status\",\"NewIncident\"]")));
 
         // when
         List<String> alertTypes = alertManagementService.getAlertTypes();
@@ -66,6 +64,26 @@ public class AlertManagementServiceContractTest {
         // then
         Assertions.assertEquals("id", alertTypes.get(0));
         Assertions.assertEquals("status", alertTypes.get(1));
+        Assertions.assertEquals("NewIncident", alertTypes.get(2));
+    }
+    
+    @Test
+    public void when_incident_created_by_provider_expected_alertTypes_values_in_response_from_provider() {
+        // given
+        wireMockServer.stubFor(get(
+                urlEqualTo("/alert-types2"))
+                .willReturn(aResponse()
+                        .withStatus(201)
+                        .withHeader("Content-Type", "application/json")
+                        .withBody("[\"id\",\"status\",\"Created\"]")));
+
+        // when
+        List<String> alertTypes = alertManagementService.getAlertTypes2();
+
+        // then
+        Assertions.assertEquals("id", alertTypes.get(0));
+        Assertions.assertEquals("status", alertTypes.get(1));
+        Assertions.assertEquals("Created", alertTypes.get(2));
     }
 
 }

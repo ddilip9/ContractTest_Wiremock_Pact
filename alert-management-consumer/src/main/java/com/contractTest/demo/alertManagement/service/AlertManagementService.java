@@ -21,4 +21,12 @@ public class AlertManagementService {
                 "/alert-types", String[].class);
         return Arrays.asList(responseEntity.getBody());
     }
+
+
+	public List<String> getAlertTypes2() {
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String[]> responseEntity = restTemplate.getForEntity(alertManagementServiceBase +
+                "/alert-types2", String[].class);
+        return Arrays.asList(responseEntity.getBody());
+	}
 }

@@ -12,6 +12,8 @@ public class IncidentService {
         List<String> list = new ArrayList<String>();
         list.add("id");
         list.add("status");
+        list.add("NewIncident");
+        list.add("Created");
         return list;
     }
 }

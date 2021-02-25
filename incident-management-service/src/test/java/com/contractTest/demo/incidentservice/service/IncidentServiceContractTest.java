@@ -18,11 +18,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 
-/**
- * This spring environment is not needed as we're using WireMock to mock the service. However,
- * if we were using a live Spring app to run our contract tests again, then we'd use it (and presumably
- * not use WireMock) - it's really upto you.
- */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ExtendWith(SpringExtension.class)
 @Provider("incident-service-producer")
@@ -31,18 +26,25 @@ public class IncidentServiceContractTest {
 
     private static final int WIREMOCK_PORT = 8082;
     private WireMockServer wireMockServer;
-
-    /** We set a Wiremock server to validate the contract. Can use real app as well.**/
+    
     @BeforeEach
     public void setup() {
         wireMockServer = new WireMockServer(WIREMOCK_PORT);
+        
         wireMockServer.stubFor(get(
                 urlEqualTo("/alert-types"))
                 .willReturn(aResponse()
-                        .withStatus(200)
+                        .withStatus(200)                        
                         .withHeader("Content-Type", "application/json")
-                        .withBody("[\"id\",\"status\"]")
-                ));
+                        .withBody("[\"id\",\"status\",\"NewIncident\"]")));
+        
+        wireMockServer.stubFor(get(
+                urlEqualTo("/alert-types2"))
+                .willReturn(aResponse()
+                        .withStatus(201)                        
+                        .withHeader("Content-Type", "application/json")
+                        .withBody("[\"id\",\"status\",\"Created\"]")));
+        
         wireMockServer.start();
     }
 

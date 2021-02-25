@@ -14,7 +14,7 @@ public class AlertManagementController {
     private AlertManagementService alertManagementService;
 
     @GetMapping("/display-alert-types")
-    public String displayFurnitureTypes(Model model) {
+    public String displayAlertTypes(Model model) {
         model.addAttribute("alertTypes", alertManagementService.getAlertTypes());
         return "alertTypes";
     }
