@@ -26,7 +26,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ExtendWith(SpringExtension.class)
 @Provider("incident-service-producer")
-@PactFolder("../furniture-ui/target/pacts")
+@PactFolder("../alert-management-consumer/target/pacts")
 public class IncidentServiceContractTest {
 
     private static final int WIREMOCK_PORT = 8082;
